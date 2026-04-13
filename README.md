@@ -2,7 +2,7 @@
 
 .NET OPC UA client library with clean high-level API. No OPC UA SDK types in the public surface.
 
-**Targets:** .NET 8 / .NET 9
+**Targets:** .NET 8 / .NET 10
 
 ## Features
 
