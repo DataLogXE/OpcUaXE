@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- NuGet package metadata -->
+    <PackageId>OpcUaXE.Client</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>DataLogXE</Authors>
+    <Company>DataLogXE</Company>
+    <Description>A .NET OPC UA client library providing a clean, high-level API for connecting to OPC UA servers, browsing nodes, reading and writing values, managing subscriptions, and handling Alarms and Conditions. No OPC UA SDK types leak into the public API.</Description>
+    <PackageTags>opc-ua;opcua;opc;client;dotnet;iot;automation</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/DataLogXE/OpcUaXE</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DataLogXE/OpcUaXE</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <!-- Symbol package for debugging support -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- Deterministic builds (required for SourceLink) -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua.Client" Version="1.5.378.134" />
+    <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua.Client.ComplexTypes" Version="1.5.378.134" />
+    <!-- SourceLink: embed source URLs in the PDB for debugger navigation -->
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Grant the test project access to internal types (handlers, context). -->
+    <InternalsVisibleTo Include="OpcUaXE.UnitTests" />
+  </ItemGroup>
+
+</Project>
